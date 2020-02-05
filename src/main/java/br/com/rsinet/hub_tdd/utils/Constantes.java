@@ -1,26 +1,26 @@
-package br.com.rsinet.hub_bdd.utils;
+package br.com.rsinet.hub_tdd.utils;
 
 public class Constantes {
 
 	/*
-	 * Comando responsavel por identificar a url do site que serao aplicados a massa
+	 * Comando responsavel por identificar a url do site que serão aplicados a massa
 	 * de dados.
 	 */
 	public static final String URL = "http://advantageonlineshopping.com/#/";
 	/*
-	 * Comando responsavel por identificar o endereco do arquivo para manipulaco da
+	 * Comando responsavel por identificar o endereço do arquivo para manipulação da
 	 * massa de dados.
 	 */
-	public static final String Path_TestData = "src\\main\\java\\br\\com\\rsinet\\hub_bdd\\testData\\";
+	public static final String Path_TestData = "src\\main\\java\\br\\com\\rsinet\\hub_tdd\\testData\\";
 	/*
-	 * Comando responsavel por identificar o nome do arquivo de manipulaco de massa
+	 * Comando responsavel por identificar o nome do arquivo de manipulação de massa
 	 * de dados.
 	 */
 	public static final String File_TestData = "MassaDeDados.xlsx";
 
 	/*
-	 * Area onde sao identificados as celulas de dentro do arquivo de massa de dados
-	 * atraves da coluna e armazenados nas variaveis.
+	 * Área onde são identificados as celulas de dentro do arquivo de massa de dados
+	 * através da coluna e armazenados nas variaveis.
 	 */
 	// Cadastro
 	public static final int userName = 1;

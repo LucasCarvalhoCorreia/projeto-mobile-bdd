@@ -5,7 +5,7 @@ Funcionalidade: Cadastro de novo usuario.
 
 Contexto: 
 	Dado que o usuario tenha entrado no app e clicado na opcao de menu
-		Quando Ele clicar no link de login
+		Quando ele clicar no link de login
 			E clicar no link de criar uma nova conta
 
 @TesteDeSucesso

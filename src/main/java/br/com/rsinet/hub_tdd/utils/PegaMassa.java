@@ -1,4 +1,4 @@
-package br.com.rsinet.hub_bdd.utils;
+package br.com.rsinet.hub_tdd.utils;
 
 public class PegaMassa {
 	
