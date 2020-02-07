@@ -1,21 +1,25 @@
-package br.com.rsinet.hub_tdd.utils;
+package br.com.rsinet.hub_bdd.manager;
 
 import java.net.URL;
 import java.util.concurrent.TimeUnit;
 
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
 import io.appium.java_client.android.AndroidDriver;
 
 public class DriverFactory {
 
-	public static AndroidDriver<WebElement> driver;
+	public static WebDriver driver;
+	
+	public static WebDriver getDriver() throws Exception {
+		return (driver == null) ? iniciaApp() : driver; 
+	}
 
-	@SuppressWarnings({ "rawtypes", "unchecked" })
-	public static AndroidDriver<WebElement> iniciaApp() throws Exception {
+	@SuppressWarnings({ "rawtypes" })
+	public static WebDriver iniciaApp() throws Exception {
 		DesiredCapabilities capabilities = new DesiredCapabilities();
-		capabilities.setCapability("deviceName", "ASUS_X018D");
+		capabilities.setCapability("deviceName", "Celular");
 		capabilities.setCapability("appPackage", "com.Advantage.aShopping");
 		capabilities.setCapability("appActivity", ".SplashActivity");
 
@@ -25,10 +29,11 @@ public class DriverFactory {
 		return driver;
 	}
 
-	/* Método responsavel por fechar o browzer. */
-	public static AndroidDriver<WebElement> fechaApp() {
+	/* Método responsavel por fechar o browser. */
+	public static void fechaApp() {
+		if (driver != null) {	
 			driver.quit();
-
-			return driver;
+			driver = null;
+		}
 	}
 }

@@ -1,17 +1,19 @@
-package br.com.rsinet.hub_bdd.pageObject;
+package br.com.rsinet.hub_bdd.screenObject;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import io.appium.java_client.MobileElement;
 
-public class PesquisaPage {
+public class PesquisaScreen {
 
 	private WebDriver driver;
 	
-	public PesquisaPage(WebDriver driver) {
+	public PesquisaScreen(WebDriver driver) {
+		PageFactory.initElements(driver, this);
 		this.driver = driver;
 	}
 	

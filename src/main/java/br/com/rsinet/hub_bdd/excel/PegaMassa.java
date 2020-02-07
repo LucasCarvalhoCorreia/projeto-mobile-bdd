@@ -1,6 +1,17 @@
-package br.com.rsinet.hub_tdd.utils;
+package br.com.rsinet.hub_bdd.excel;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.PageFactory;
 
 public class PegaMassa {
+	
+	@SuppressWarnings("unused")
+	private WebDriver driver;
+	
+	public PegaMassa(WebDriver driver) {
+		PageFactory.initElements(driver, this);
+		this.driver = driver;
+	}
 	
 	/* Classe responsável por pegar os dados do arquivo de massa e jogar na classe de teste.*/
 	

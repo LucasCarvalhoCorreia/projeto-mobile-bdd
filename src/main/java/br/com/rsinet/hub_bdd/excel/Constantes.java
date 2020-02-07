@@ -1,4 +1,4 @@
-package br.com.rsinet.hub_tdd.utils;
+package br.com.rsinet.hub_bdd.excel;
 
 public class Constantes {
 
@@ -11,7 +11,7 @@ public class Constantes {
 	 * Comando responsavel por identificar o endereço do arquivo para manipulação da
 	 * massa de dados.
 	 */
-	public static final String Path_TestData = "src\\main\\java\\br\\com\\rsinet\\hub_tdd\\testData\\";
+	public static final String Path_TestData = "src\\main\\java\\br\\com\\rsinet\\hub_bdd\\testData\\";
 	/*
 	 * Comando responsavel por identificar o nome do arquivo de manipulação de massa
 	 * de dados.

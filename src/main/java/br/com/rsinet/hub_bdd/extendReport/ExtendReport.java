@@ -1,4 +1,4 @@
-package br.com.rsinet.hub_tdd.utils;
+package br.com.rsinet.hub_bdd.extendReport;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -27,7 +27,7 @@ public class ExtendReport {
 		htmlReporter = new ExtentHtmlReporter(System.getProperty("user.dir") + "/target/Reports "+pegaHora()+".html");
 
 		htmlReporter.config().setDocumentTitle("Automatização de Teste");// Titulo do documento
-		htmlReporter.config().setReportName("Reporte TDD");// Nome do reporte
+		htmlReporter.config().setReportName("Reporte BDD");// Nome do reporte
 		htmlReporter.config().setTheme(Theme.DARK);
 
 		extent = new ExtentReports();

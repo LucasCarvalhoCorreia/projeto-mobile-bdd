@@ -18,7 +18,7 @@ import cucumber.api.junit.Cucumber;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
- features = "Feature",/* Caminho referente as features.*/
+ features = "src/main/java/Feature",/* Caminho referente as features.*/
  glue = {"br.com.rsinet.hub_bdd.stepDefinitions"}, /* Caminho referente as classes que executam os codigos 
  														para simular os cenarios descritos*/
  plugin = {"com.cucumber.listener.ExtentCucumberFormatter:target/Reports.html"}, /* Caminho onde o report sera salvo.*/
