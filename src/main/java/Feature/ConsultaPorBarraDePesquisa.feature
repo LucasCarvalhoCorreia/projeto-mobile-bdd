@@ -1,6 +1,6 @@
 # language: pt
 
-@TesteBuscaLupa
+@TesteDeConsultaPorBarraDePesquisa
 Funcionalidade: Consulta de produtos por barra de pesquisa.
 
 @TesteDeSucesso

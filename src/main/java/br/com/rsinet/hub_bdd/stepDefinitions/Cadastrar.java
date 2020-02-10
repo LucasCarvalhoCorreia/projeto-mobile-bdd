@@ -7,6 +7,7 @@ import org.testng.Assert;
 import br.com.rsinet.hub_bdd.excel.Constantes;
 import br.com.rsinet.hub_bdd.excel.ExcelUtils;
 import br.com.rsinet.hub_bdd.excel.PegaMassa;
+import br.com.rsinet.hub_bdd.manager.DriverFactory;
 import br.com.rsinet.hub_bdd.manager.ScreenObjectManager;
 import br.com.rsinet.hub_bdd.screenObject.CadastroScreen;
 import br.com.rsinet.hub_bdd.screenObject.HomeScreen;
@@ -24,6 +25,7 @@ public class Cadastrar {
 	
 	@Dado("^que o usuario tenha entrado no app e clicado na opcao de menu$")
 	public void que_o_usuario_tenha_entrado_no_app_e_clicado_na_opcao_de_menu() throws Throwable {
+		driver = DriverFactory.iniciaApp();
 		PageFactory.initElements(driver, this);
 		ScreenObjectManager manager = new ScreenObjectManager(driver);
 		cadastroScreen = manager.getCadastroScreen();
@@ -60,9 +62,9 @@ public class Cadastrar {
 		
 		cadastroScreen.preencheLastName(pegaMassa.LastName());
 		
-		cadastroScreen.preenchePhoneNumber(pegaMassa.Telefone());
-		
 		cadastroScreen.scroll(0.9, 0.0);
+		
+		cadastroScreen.preenchePhoneNumber(pegaMassa.Telefone());
 		
 		cadastroScreen.clicaCountry();	
 		

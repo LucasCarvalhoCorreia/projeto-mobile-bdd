@@ -1,6 +1,6 @@
 # language: pt
 
-@TesteBuscaHome
+@TesteDeConsultaPorCategoria
 Funcionalidade: Pesquisa de produtos por categoria.
 
 Contexto: 

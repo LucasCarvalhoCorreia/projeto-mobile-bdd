@@ -10,7 +10,7 @@ import io.appium.java_client.android.AndroidDriver;
 
 public class DriverFactory {
 
-	public static WebDriver driver;
+	private static WebDriver driver;
 	
 	public static WebDriver getDriver() throws Exception {
 		return (driver == null) ? iniciaApp() : driver; 
@@ -20,8 +20,10 @@ public class DriverFactory {
 	public static WebDriver iniciaApp() throws Exception {
 		DesiredCapabilities capabilities = new DesiredCapabilities();
 		capabilities.setCapability("deviceName", "Celular");
+//		capabilities.setCapability("deviceName", "ASUS_X018D");
 		capabilities.setCapability("appPackage", "com.Advantage.aShopping");
 		capabilities.setCapability("appActivity", ".SplashActivity");
+		capabilities.setCapability("unicodeKeyboard", true);
 
 		driver = new AndroidDriver(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
@@ -33,7 +35,6 @@ public class DriverFactory {
 	public static void fechaApp() {
 		if (driver != null) {	
 			driver.quit();
-			driver = null;
 		}
 	}
 }
