@@ -2,6 +2,9 @@ package br.com.rsinet.hub_bdd.screenObject;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -17,6 +20,30 @@ public class HomeScreen {
 		this.driver = driver;
 	}
 	
+	@FindBy(how = How.ID, using = "com.Advantage.aShopping:id/textViewMenuUser")
+	private WebElement bt_LoginIcon;
+	
+	@FindBy(how = How.ID, using = "com.Advantage.aShopping:id/textViewDontHaveAnAccount")
+	private WebElement bt_CriaNovaConta;
+
+	@FindBy(how = How.ID, using = "com.Advantage.aShopping:id/editTextSearch")
+	private WebElement bt_BarraPesquisa;
+
+	@FindBy(how = How.ID, using = "com.Advantage.aShopping:id/imageViewSearch")
+	private WebElement bt_Lupa;
+
+	@FindBy(how = How.XPATH, using = "//android.view.ViewGroup[@content-desc=\"Home Page\"]/android.widget.LinearLayout[2]/android.widget.LinearLayout/android.support.v7.widget.RecyclerView/android.widget.RelativeLayout[4]/android.widget.ImageView")
+	private WebElement bt_CatSpeakers;
+
+	@FindBy(how = How.XPATH, using = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.LinearLayout[2]/android.widget.RelativeLayout[3]/android.widget.EditText")
+	private WebElement txt_UserLogin;
+
+	@FindBy(how = How.XPATH, using = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.LinearLayout[2]/android.widget.RelativeLayout[4]/android.widget.EditText")
+	private WebElement txt_UserPassword;
+
+	@FindBy(how = How.ID, using = "com.Advantage.aShopping:id/buttonLogin")
+	private WebElement bt_Login;
+
 	private MobileElement encontraMenu(WebDriver driver) {
 		WebDriverWait wait = new WebDriverWait(driver, 50);
 		MobileElement encontraMenu = (MobileElement) wait.until(ExpectedConditions.elementToBeClickable(By.id("com.Advantage.aShopping:id/imageViewMenu")));
@@ -28,11 +55,11 @@ public class HomeScreen {
 	}
 	
 	public void clicaLogin() {
-		driver.findElement(By.id("com.Advantage.aShopping:id/textViewMenuUser")).click();
+		bt_LoginIcon.click();
 	}
 	
 	public void clicaCriarNovaConta() {
-		driver.findElement(By.id("com.Advantage.aShopping:id/textViewDontHaveAnAccount")).click();
+		bt_CriaNovaConta.click();
 	}
 	
 	public MobileElement pegaLogon() {
@@ -40,61 +67,31 @@ public class HomeScreen {
 		return pegaLogon;
 	}
 	
-	private MobileElement encontraBarraPesquisa() {
-		MobileElement encontraBarraPesquisa = (MobileElement) driver.findElement(By.id("com.Advantage.aShopping:id/editTextSearch"));
-		return encontraBarraPesquisa;
-	}
-	
 	public void preencheBarraPesquisa(String et_BarraPesquisa) {
-		encontraBarraPesquisa().click();
-		encontraBarraPesquisa().sendKeys(et_BarraPesquisa);
-	}
-	
-	private MobileElement encontraLupa() {
-		MobileElement encontraLupa = (MobileElement) driver.findElement(By.id("com.Advantage.aShopping:id/imageViewSearch"));
-		return encontraLupa;
+		bt_BarraPesquisa.click();
+		bt_BarraPesquisa.sendKeys(et_BarraPesquisa);
 	}
 	
 	public void clicaLupa() {
-		encontraLupa().click();
-	}
-	
-	private MobileElement encontraSpeakers() {
-		MobileElement encontraSpeakers = (MobileElement) driver.findElement(By.xpath("//android.view.ViewGroup[@content-desc=\"Home Page\"]/android.widget.LinearLayout[2]/android.widget.LinearLayout/android.support.v7.widget.RecyclerView/android.widget.RelativeLayout[4]/android.widget.ImageView"));
-		return encontraSpeakers;
+		bt_Lupa.click();
 	}
 	
 	public void clicaCategoriaSpeakers() {
-		encontraSpeakers().click();
-	}
-	
-	private MobileElement encontraUserLogin() {
-		MobileElement encontraUserLogin = (MobileElement) driver.findElement(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.LinearLayout[2]/android.widget.RelativeLayout[3]/android.widget.EditText"));
-		return encontraUserLogin;
+		bt_CatSpeakers.click();
 	}
 	
 	public void preencheUserLogin(String et_UserLogin) {
-		encontraUserLogin().click();
-		encontraUserLogin().sendKeys(et_UserLogin);
-	}
-	
-	private MobileElement encontraPasswordLogin() {
-		MobileElement encontraUserLogin = (MobileElement) driver.findElement(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.LinearLayout[2]/android.widget.RelativeLayout[4]/android.widget.EditText"));
-		return encontraUserLogin;
+		txt_UserLogin.click();
+		txt_UserLogin.sendKeys(et_UserLogin);
 	}
 	
 	public void preenchePasswordLogin(String et_PasswordLogin) {
-		encontraPasswordLogin().click();
-		encontraPasswordLogin().sendKeys(et_PasswordLogin);
-	}
-	
-	private MobileElement encontraBtLogin() {
-		MobileElement encontraBtLogin = (MobileElement) driver.findElement(By.id("com.Advantage.aShopping:id/buttonLogin"));
-		return encontraBtLogin;
+		txt_UserPassword.click();
+		txt_UserPassword.sendKeys(et_PasswordLogin);
 	}
 	
 	public void clicaBtLogin() {
-		encontraBtLogin().click();
+		bt_Login.click();
 	}
 	
 	private MobileElement encontraNoBt(WebDriver driver) {
