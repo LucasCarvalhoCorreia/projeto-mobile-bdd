@@ -4,7 +4,7 @@ Projeto desenvolvido com o objetivo de testar conhecimentos em relação a desen
 
 Conteúdo e descrições do projeto:
 
-# projeto-appium-tdd
+projeto-appium-tdd
 
 src/main/java (pasta onde estão as classes e pacotes)
 
