@@ -7,8 +7,8 @@ import org.testng.Assert;
 import br.com.rsinet.hub_bdd.excel.Constantes;
 import br.com.rsinet.hub_bdd.excel.ExcelUtils;
 import br.com.rsinet.hub_bdd.excel.PegaMassa;
-import br.com.rsinet.hub_bdd.manager.DriverFactory;
 import br.com.rsinet.hub_bdd.manager.ScreenObjectManager;
+import br.com.rsinet.hub_bdd.manager.TestContext;
 import br.com.rsinet.hub_bdd.screenObject.HomeScreen;
 import br.com.rsinet.hub_bdd.screenObject.PesquisaScreen;
 import cucumber.api.java.pt.Dado;
@@ -21,15 +21,20 @@ public class ConsultaPorCategoria {
 	private HomeScreen homeScreen;
 	private PegaMassa pegaMassa;
 	private PesquisaScreen pesquisaScreen;
+	private TestContext testContext;
+	
+	public ConsultaPorCategoria(TestContext context) throws Exception {
+		testContext = context;
+		driver = testContext.getDriverFactory().iniciaApp();
+	}
 	
 	@Dado("^que o usuario tenha entrado no app e efetue o login$")
 	public void que_o_usuario_tenha_entrado_no_app_e_efetue_o_login() throws Throwable {
-		driver = DriverFactory.iniciaApp();
 		PageFactory.initElements(driver, this);
 		ScreenObjectManager manager = new ScreenObjectManager(driver);
 		homeScreen = manager.getHomeScreen();
-		pesquisaScreen = manager.getPesquisaScreen();
 		pegaMassa = manager.getPegaMassa();
+		pesquisaScreen = manager.getPesquisaScreen();
 		
 		ExcelUtils.setExcelFile(Constantes.Path_TestData + Constantes.File_TestData, "Cadastro");
 		

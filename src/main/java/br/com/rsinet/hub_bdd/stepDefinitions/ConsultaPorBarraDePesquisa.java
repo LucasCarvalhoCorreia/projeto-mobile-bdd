@@ -7,8 +7,8 @@ import org.testng.Assert;
 import br.com.rsinet.hub_bdd.excel.Constantes;
 import br.com.rsinet.hub_bdd.excel.ExcelUtils;
 import br.com.rsinet.hub_bdd.excel.PegaMassa;
-import br.com.rsinet.hub_bdd.manager.DriverFactory;
 import br.com.rsinet.hub_bdd.manager.ScreenObjectManager;
+import br.com.rsinet.hub_bdd.manager.TestContext;
 import br.com.rsinet.hub_bdd.screenObject.HomeScreen;
 import br.com.rsinet.hub_bdd.screenObject.PesquisaScreen;
 import cucumber.api.java.pt.Dado;
@@ -21,16 +21,23 @@ public class ConsultaPorBarraDePesquisa {
 	private HomeScreen homeScreen;
 	private PegaMassa pegaMassa;
 	private PesquisaScreen pesquisaScreen;
+	private TestContext testContext;
+	
+	public ConsultaPorBarraDePesquisa(TestContext context) throws Exception {
+		testContext = context;
+		driver = testContext.getDriverFactory().iniciaApp();
+	}
+	
 	
 	@Dado("^que o usuario tenha entrado no app e digitado o nome do produto desejado na barra de pesquisa$")
 	public void que_o_usuario_tenha_entrado_no_app_e_digitado_o_nome_do_produto_desejado_na_barra_de_pesquisa() throws Throwable {
-		driver = DriverFactory.iniciaApp();
-		ExcelUtils.setExcelFile(Constantes.Path_TestData + Constantes.File_TestData, "PesquisaBarra");
 		PageFactory.initElements(driver, this);
 		ScreenObjectManager manager = new ScreenObjectManager(driver);
 		homeScreen = manager.getHomeScreen();
-		pesquisaScreen = manager.getPesquisaScreen();
 		pegaMassa = manager.getPegaMassa();
+		pesquisaScreen = manager.getPesquisaScreen();
+		
+		ExcelUtils.setExcelFile(Constantes.Path_TestData + Constantes.File_TestData, "PesquisaBarra");
 		
 		homeScreen.preencheBarraPesquisa(pegaMassa.PesquisaNaBarra());
 	}
@@ -56,7 +63,6 @@ public class ConsultaPorBarraDePesquisa {
 
 	@Dado("^que o usuario tenha entrado no app e digitado o nome do produto inexistente no banco na barra de pesquisa$")
 	public void que_o_usuario_tenha_entrado_no_app_e_digitado_o_nome_do_produto_inexistente_no_banco_na_barra_de_pesquisa() throws Throwable {
-		driver = DriverFactory.iniciaApp();
 		ExcelUtils.setExcelFile(Constantes.Path_TestData + Constantes.File_TestData, "PesquisaBarra");
 		PageFactory.initElements(driver, this);
 		ScreenObjectManager manager = new ScreenObjectManager(driver);

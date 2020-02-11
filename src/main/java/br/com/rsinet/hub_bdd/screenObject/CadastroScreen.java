@@ -10,7 +10,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
 
-import br.com.rsinet.hub_bdd.manager.DriverFactory;
+import br.com.rsinet.hub_bdd.manager.TestContext;
 import io.appium.java_client.MobileBy;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.PerformsTouchActions;
@@ -22,6 +22,8 @@ import io.appium.java_client.touch.offset.PointOption;
 public class CadastroScreen {
 	
 	private WebDriver driver;
+	@SuppressWarnings("unused")
+	private TestContext testContext;
 	
 	public CadastroScreen(WebDriver driver) {
 		PageFactory.initElements(driver, this);
@@ -148,13 +150,13 @@ public class CadastroScreen {
 	}
 	
 	@SuppressWarnings("rawtypes")
-	public void scroll(double inicio, double fim) throws Exception {
-		Dimension size = DriverFactory.getDriver().manage().window().getSize();
+	public void RolarTela(double inicio, double fim) throws Exception {
+		Dimension size = driver.manage().window().getSize();
 
 		int x = size.width / 2;
 		int start_y = (int) (size.height * inicio);
 		int end_y = (int) (size.height * fim);
-		new TouchAction((PerformsTouchActions) DriverFactory.getDriver()).press(PointOption.point(x, start_y))
+		new TouchAction((PerformsTouchActions) driver).press(PointOption.point(x, start_y))
 				.waitAction((WaitOptions.waitOptions(Duration.ofMillis(500))))//
 				.moveTo(PointOption.point(x, end_y))//
 				.release().perform();

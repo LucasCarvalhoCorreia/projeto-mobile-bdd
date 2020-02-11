@@ -7,8 +7,8 @@ import org.testng.Assert;
 import br.com.rsinet.hub_bdd.excel.Constantes;
 import br.com.rsinet.hub_bdd.excel.ExcelUtils;
 import br.com.rsinet.hub_bdd.excel.PegaMassa;
-import br.com.rsinet.hub_bdd.manager.DriverFactory;
 import br.com.rsinet.hub_bdd.manager.ScreenObjectManager;
+import br.com.rsinet.hub_bdd.manager.TestContext;
 import br.com.rsinet.hub_bdd.screenObject.CadastroScreen;
 import br.com.rsinet.hub_bdd.screenObject.HomeScreen;
 import cucumber.api.java.pt.Dado;
@@ -22,16 +22,21 @@ public class Cadastrar {
 	private CadastroScreen cadastroScreen;
 	private HomeScreen homeScreen;
 	private PegaMassa pegaMassa;
+	private TestContext testContext;
+	
+	public Cadastrar(TestContext context) throws Exception {
+		testContext = context;
+		driver = testContext.getDriverFactory().iniciaApp();
+	}
 	
 	@Dado("^que o usuario tenha entrado no app e clicado na opcao de menu$")
 	public void que_o_usuario_tenha_entrado_no_app_e_clicado_na_opcao_de_menu() throws Throwable {
-		driver = DriverFactory.iniciaApp();
 		PageFactory.initElements(driver, this);
 		ScreenObjectManager manager = new ScreenObjectManager(driver);
 		cadastroScreen = manager.getCadastroScreen();
 		homeScreen = manager.getHomeScreen();
 		pegaMassa = manager.getPegaMassa();
-		
+
 		ExcelUtils.setExcelFile(Constantes.Path_TestData + Constantes.File_TestData, "Cadastro");
 		
 		homeScreen.clicaMenu();
@@ -62,7 +67,7 @@ public class Cadastrar {
 		
 		cadastroScreen.preencheLastName(pegaMassa.LastName());
 		
-		cadastroScreen.scroll(0.9, 0.0);
+		cadastroScreen.RolarTela(0.9, 0.0);
 		
 		cadastroScreen.preenchePhoneNumber(pegaMassa.Telefone());
 		
