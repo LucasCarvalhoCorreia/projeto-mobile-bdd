@@ -14,8 +14,8 @@ public class DriverFactory {
 	@SuppressWarnings({ "rawtypes" })
 	public WebDriver iniciaApp() throws Exception {
 		DesiredCapabilities capabilities = new DesiredCapabilities();
-//		capabilities.setCapability("deviceName", "Celular");
-		capabilities.setCapability("deviceName", "ASUS_X018D");
+		capabilities.setCapability("deviceName", "Celular");
+//		capabilities.setCapability("deviceName", "ASUS_X018D");
 		capabilities.setCapability("appPackage", "com.Advantage.aShopping");
 		capabilities.setCapability("appActivity", ".SplashActivity");
 		capabilities.setCapability("unicodeKeyboard", true);
