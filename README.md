@@ -1,6 +1,6 @@
 # Projeto-Appium-BDD
 
-Projeto desenvolvido com o objetivo de testar conhecimentos em relação a desenvolvimento de testes de automação em TDD para dispositivos Mobile.
+Projeto desenvolvido com o objetivo de testar conhecimentos em relação a desenvolvimento de testes de automação em BDD para dispositivos móveis com Cucumber.
 
 Conteúdo e descrições do projeto:
 
