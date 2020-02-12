@@ -29,12 +29,12 @@ projeto-appium-bdd
       
     - br.com.rsinet.hub_bdd.stepDefinitions (Pacote responsável por agrupar as classes que vão executar os passos de teste do cucumber.)
       - Cadastrar.java (Classe responsável por executar os passos dos cenários de teste de cadastro descritos no stories.)
-      - ConsultaPorBarraDePesquisa.java Classe responsável por executar os passos dos cenários de teste de consulta por lupa descritos no stories.)
-      - ConsultaPorCategoria.java Classe responsável por executar os passos dos cenários de teste de consulta por categoria descritos no stories.)
+      - ConsultaPorBarraDePesquisa.java (Classe responsável por executar os passos dos cenários de teste de consulta por lupa descritos no stories.)
+      - ConsultaPorCategoria.java (Classe responsável por executar os passos dos cenários de teste de consulta por categoria descritos no stories.)
       - Hooks.java (Classe responsável por iniciar e fechar o app, gerar os relatórios e tirar as prints dos cenários de teste.)
       
     - br.com.rsinet.hub_bdd.testData (Pacote que contém a classe que contem a massa de dados.)
-      - MassaDeDados.xlsx (Arquivos responsável por armazenar os dados da massa de dados.)
+      - MassaDeDados.xlsx (Arquivo responsável por armazenar os dados da massa de dados.)
       
     - br.com.rsinet.hub_bdd.testRunner (Pacote que contém a classe que roda todos os testes.)
       - TestRunner.java (Classe responsável por executar todos os testes através do cucumber.)
@@ -45,9 +45,9 @@ projeto-appium-bdd
       - ConsultaPorCategoria.feature (Arquivo que contém os stories de cenários de teste de consulta por categoria.)
     
   - configs (Pasta que contém o arquivo reponsável por configurar a interface do extend report.)
-    - extension-config.xml
+    - extension-config.xml (Arquivo responsável por configurar a interface do extend report.)
   
   - target (Pasta que guarda os prints e o relatório do extend report.)
-    - Reports.html
+    - Reports.html (Relatório gerado pelo extend report o final dos testes.)
   
   - pom.xml (Arquivo responsável por baixar e orgnizar as dependências do maven.)
