@@ -11,9 +11,6 @@ import com.cucumber.listener.Reporter;
 import cucumber.api.CucumberOptions;
 import cucumber.api.junit.Cucumber;
 
-
-
-
 /* Esta classe roda todos os cenarios descritos nas features e gera um relatorio.*/
 
 @RunWith(Cucumber.class)
@@ -25,7 +22,6 @@ import cucumber.api.junit.Cucumber;
  )
 
 public class TestRunner {
-	
 	/* Executa as configuracoes do extend report.*/
 	@AfterClass
 	public static void writeExtentReport() {

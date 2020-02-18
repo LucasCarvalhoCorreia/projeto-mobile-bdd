@@ -1,8 +1,5 @@
 package br.com.rsinet.hub_bdd.extendReport;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
 import org.openqa.selenium.WebDriver;
 import org.testng.ITestResult;
 
@@ -14,17 +11,14 @@ import com.aventstack.extentreports.reporter.configuration.Theme;
 
 public class ExtendReport {
 
-	public static WebDriver driver;
-	public static ExtentHtmlReporter htmlReporter;
-	public static ExtentTest test;
-	public static ExtentReports extent;
+	public WebDriver driver;
+	public ExtentHtmlReporter htmlReporter;
+	public ExtentTest test;
+	public ExtentReports extent;
+	public Prints print;
 
-	public static String pegaHora() {
-		return new SimpleDateFormat("yyyy-MM-dd HH-mm-ss").format(new Date());
-	}
-
-	public static void setExtent() {
-		htmlReporter = new ExtentHtmlReporter(System.getProperty("user.dir") + "/target/Reports "+pegaHora()+".html");
+	public void setExtent() {
+		htmlReporter = new ExtentHtmlReporter(System.getProperty("user.dir") + "/target/Reports "+Prints.timestamp()+".html");
 
 		htmlReporter.config().setDocumentTitle("Automatização de Teste");// Titulo do documento
 		htmlReporter.config().setReportName("Reporte BDD");// Nome do reporte
@@ -40,15 +34,15 @@ public class ExtendReport {
 		extent.setSystemInfo("Browser", "Chrome");
 	}
 
-	public static void endReport() {
+	public void endReport() {
 		extent.flush();
 	}
 
-	public static ExtentTest createTest(String testName) {
+	public ExtentTest createTest(String testName) {
 		return extent.createTest(testName);
 	}
 
-	public static void tearDown(ITestResult result, ExtentTest test, WebDriver driver) throws Exception {
+	public void tearDown(ITestResult result, ExtentTest test, WebDriver driver) throws Exception {
 		String caminho = Prints.tirarPrints(driver, result.getName());
 		if (result.getStatus() == ITestResult.FAILURE) {
 			test.log(Status.FAIL, "Caso de teste falhou " + result.getName()); // Adiciona o nome na extenção reporte

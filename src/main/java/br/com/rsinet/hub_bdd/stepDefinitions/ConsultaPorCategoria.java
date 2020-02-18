@@ -16,37 +16,37 @@ import cucumber.api.java.pt.Entao;
 import cucumber.api.java.pt.Quando;
 
 public class ConsultaPorCategoria {
-	
+
 	private WebDriver driver;
 	private HomeScreen homeScreen;
 	private PegaMassa pegaMassa;
 	private PesquisaScreen pesquisaScreen;
 	private TestContext testContext;
-	
+
 	public ConsultaPorCategoria(TestContext context) throws Exception {
 		testContext = context;
 		driver = testContext.getDriverFactory().iniciaApp();
-	}
-	
-	@Dado("^que o usuario tenha entrado no app e efetue o login$")
-	public void que_o_usuario_tenha_entrado_no_app_e_efetue_o_login() throws Throwable {
+
 		PageFactory.initElements(driver, this);
 		ScreenObjectManager manager = new ScreenObjectManager(driver);
 		homeScreen = manager.getHomeScreen();
 		pegaMassa = manager.getPegaMassa();
 		pesquisaScreen = manager.getPesquisaScreen();
-		
+
 		ExcelUtils.setExcelFile(Constantes.Path_TestData + Constantes.File_TestData, "Cadastro");
-		
+	}
+
+	@Dado("^que o usuario tenha entrado no app e efetue o login$")
+	public void que_o_usuario_tenha_entrado_no_app_e_efetue_o_login() throws Throwable {
 		homeScreen.clicaMenu();
-		
+
 		homeScreen.clicaLogin();
-		
+
 		homeScreen.preencheUserLogin(pegaMassa.UserName());
 		homeScreen.preenchePasswordLogin(pegaMassa.Password());
-		
+
 		homeScreen.clicaBtLogin();
-		
+
 //		homeScreen.clicaNoBt();
 	}
 
@@ -63,10 +63,10 @@ public class ConsultaPorCategoria {
 	@Entao("^verifica se o produto correto foi selecionado$")
 	public void verifica_se_o_produto_correto_foi_selecionado() throws Throwable {
 		ExcelUtils.setExcelFile(Constantes.Path_TestData + Constantes.File_TestData, "PesquisaCat");
-		
+
 		String condicao = pegaMassa.CondicaoAssertMassaSucesso();
 		String mensagem = pegaMassa.MenssagemAssertMassaSucesso();
-		
+
 		String pass = pesquisaScreen.encontraNomePorduto(driver).getText();
 		Assert.assertTrue(pass.equals(condicao), mensagem);
 	}
@@ -91,12 +91,12 @@ public class ConsultaPorCategoria {
 	@Entao("^checar se a quantidade de produtos solicitada corresponde a quantidade no carrinho$")
 	public void checar_se_a_quantidade_de_produtos_solicitada_corresponde_a_quantidade_no_carrinho() throws Throwable {
 		ExcelUtils.setExcelFile(Constantes.Path_TestData + Constantes.File_TestData, "PesquisaCat");
-		
+
 		String condicao = pegaMassa.CondicaoAssertMassaErro();
 		String mensagem = pegaMassa.MenssagemAssertMassaErro();
-		
+
 		String pass = pesquisaScreen.encontraQuantidadeComprada().getText();
 		Assert.assertTrue(pass.equals(condicao), mensagem);
 	}
-	
+
 }
